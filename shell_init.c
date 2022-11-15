@@ -53,7 +53,7 @@ int main(int ac, char **av, char **env)
 void prompt(void)
 {
 	if (isatty(STDIN_FILENO))
-		write(STDOUT_FILENO, "Hell_Shell>> ", 13);
+		write(STDOUT_FILENO, "Simple_Shell>> ", 15);
 }
 
 
@@ -65,7 +65,7 @@ void prompt(void)
 void handle(int signals)
 {
 	(void)signals;
-	write(STDOUT_FILENO, "\nHell_Shell>> ", 14);
+	write(STDOUT_FILENO, "\nSimple_Shell>> ", 16);
 }
 
 
