@@ -16,6 +16,8 @@ void start_prompt(char **s)
  * @pg: Program name
  * @cmd: Command typed
  * @av: Array of command arguments
+ *
+ * Return: Always return an intger
  */
 int print_error(char *pg, char *cmd, char **av)
 {
@@ -49,6 +51,7 @@ void _puts2(char *str)
 /**
  * end_prompt - Ends shell prompt
  * @p: Pointer to line input string
+ * @q: var to take value of exit
  */
 void end_prompt(char *p, int q)
 {
