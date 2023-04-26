@@ -1,6 +1,7 @@
 0x16. C - Simple Shell
 
 By Theophilus Nyarko-Mensah and Oluwafemi Awodele
+ALX - Cohort 12
 
 
 Background Context
