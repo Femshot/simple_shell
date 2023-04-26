@@ -36,10 +36,11 @@ void _puts(char *str);
 int _strlen(const char *s);
 void print_newprompt(char **arr);
 void free_safe_2(char **pointer);
-void print_error(char *pg, char *cmd, char **av);
+int print_error(char *pg, char *cmd, char **av);
 void _puts2(char *str);
 void start_prompt(char **s);
-void end_prompt(char *p);
+void end_prompt(char *p, int q);
 int _atoi(char *s);
+void print_number(int n);
 
 #endif

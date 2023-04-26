@@ -11,7 +11,7 @@ int main(int ac, char **av)
 {
 	char *lineptr, *pat, **path_ev, *bv, *cv;
 	size_t num = 0;
-	int count = 0, count_2 = 0, chk, ret = 0;
+	int count = 0, count_2 = 0, chk, ret = 0, ret_2;
 	struct stat st;
 
 	(void) ac;
@@ -22,6 +22,7 @@ int main(int ac, char **av)
 		ret = getline(&lineptr, &num, stdin);
 		if (ret == -1)
 			break;
+		ret_2 = 0;
 		count = count_tokens(lineptr);
 		av = create_token_array(lineptr, count);
 		chk = checking_built(av);
@@ -39,14 +40,14 @@ int main(int ac, char **av)
 				if (av[0] != NULL)
 					run_exe(av, pat);
 				else
-					print_error(bv, cv, av);
+					ret_2 = print_error(bv, cv, av);
 				free(cv);
 			}
 			free_safe_2(path_ev);
 		}
 		free(lineptr);
 	}
-	end_prompt(lineptr);
+	end_prompt(lineptr, ret_2);
 	return (0);
 }
 

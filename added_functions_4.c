@@ -17,14 +17,20 @@ void start_prompt(char **s)
  * @cmd: Command typed
  * @av: Array of command arguments
  */
-void print_error(char *pg, char *cmd, char **av)
+int print_error(char *pg, char *cmd, char **av)
 {
+	static int i = 1;
+
 	_puts2(pg);
-	_puts2(": 1: ");
+	_puts2(": ");
+	print_number(i);
+	_puts2(": ");
 	_puts2(cmd);
 	_puts2(": not found");
 	_putchar('\n');
+	i++;
 	free_safe_2(av);
+	return (127);
 }
 
 /**
@@ -44,11 +50,13 @@ void _puts2(char *str)
  * end_prompt - Ends shell prompt
  * @p: Pointer to line input string
  */
-void end_prompt(char *p)
+void end_prompt(char *p, int q)
 {
 	free(p);
 	if (isatty(STDIN_FILENO))
 		_putchar('\n');
+	if (q == 127)
+		exit(127);
 }
 
 /**
