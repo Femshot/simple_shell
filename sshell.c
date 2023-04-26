@@ -63,12 +63,14 @@ int count_tokens(char *str)
 
 	if (str == NULL)
 		exit(EXIT_FAILURE);
-	if (str[0] == '\n')
-		return (1);
+
 	ptr = make_copy(str);
 	token = strtok(ptr, " \t\n");
-	/*if (token == NULL)  added this*/
-		/*return (1);*/
+	if (token == NULL)
+	{
+		if (*str == '\n' || *str == ' ')
+			return (1);
+	}
 	while (token != NULL)
 	{
 		count++;
@@ -96,14 +98,16 @@ char **create_token_array(char *str, int count)
 		_puts("Unable to allocate memory space");
 		exit(EXIT_FAILURE);
 	}
-
-	if (*str == '\n') /*added this*/
-	{
-		av[i] = "\n";
-		return (av);
-	}
 	ptr = make_copy(str);
 	token = strtok(ptr, " \n");
+	if (token == NULL)
+	{
+		if (*str == '\n' || *str == ' ')
+		{
+			av[i] = "\n";
+			return (av);
+		}
+	}
 	while (token != NULL)
 	{
 		av[i] = make_copy(token);

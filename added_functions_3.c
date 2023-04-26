@@ -50,11 +50,11 @@ void exit_shell(char **arr)
 	if (arr[1]  == NULL)
 	{
 		free_safe_2(arr);
-		_exit(0);
+		exit(EXIT_SUCCESS);
 	}
 	num = _atoi(arr[1]);
 	free_safe_2(arr);
-	_exit(num);
+	exit(num);
 }
 
 /**
