@@ -70,7 +70,10 @@ int count_tokens(char *str)
 	if (token == NULL)
 	{
 		if (*str == '\n' || *str == ' ')
+		{
+			free(ptr);
 			return (1);
+		}
 	}
 	while (token != NULL)
 	{
@@ -100,19 +103,21 @@ char **create_token_array(char *str, int count)
 		exit(EXIT_FAILURE);
 	}
 	ptr = make_copy(str);
-	token = strtok(ptr, " \n");
+	token = strtok(ptr, " \t\n");
 	if (token == NULL)
 	{
 		if (*str == '\n' || *str == ' ')
 		{
 			av[i] = "\n";
+			av[i + 1] = NULL;
+			free(ptr);
 			return (av);
 		}
 	}
 	while (token != NULL)
 	{
 		av[i] = make_copy(token);
-		token = strtok(NULL, " \n");
+		token = strtok(NULL, " \t\n");
 		i++;
 	}
 	av[i] = NULL;
